@@ -88,8 +88,8 @@ function Hero({ scrollYProgress }: HeroProps) {
 
 type PhotoIdentityProps = {
   scale: MotionValue<number>;
-  x: MotionValue<string | number>;
-  y: MotionValue<string | number>;
+  x: MotionValue<string>;
+  y: MotionValue<string>;
   radius: MotionValue<number>;
 };
 
