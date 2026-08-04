@@ -1,32 +1,509 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   DESIGN SYSTEM — built from first principles for this content.
+   ---------------------------------------------------------------------------
+   Three typographic voices, and only three:
+     · sans  (Inter)          — structure. Headings, UI, navigation.
+     · serif (Newsreader)     — narrative. Ledes, overviews, pull quotes.
+     · mono  (IBM Plex Mono)  — data. Eyebrows, dates, metrics, status.
+
+   One accent (#2563EB), used for state and emphasis — never decoration.
+   Hairlines carry the structure; cards are reserved for things that are
+   genuinely raised. No gradient washes, no glows, no glass.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   TWO THEMES, ONE SET OF TOKENS.
+
+   Every component reads semantic variables only, so the whole site inverts by
+   remapping this block — no `dark:` variant anywhere in the component tree.
+
+   The dark values live once, in inert `--d-*` variables, and are remapped by two
+   selectors that must stay in agreement:
+     [data-theme="dark"]                    — an explicit choice, set by the toggle
+     :root:not([data-theme="light"]) in a
+     prefers-color-scheme media query       — the OS default, with no JavaScript
+
+   Values are plain hex/rgba rather than `light-dark()` because Tailwind's opacity
+   modifiers (`bg-accent/85`, `text-ink-4/40`) compile to `color-mix()`, which needs a
+   resolvable colour rather than a value that resolves at used-value time.
+   -------------------------------------------------------------------------- */
+
 :root {
-  --background: #f7f4ef;
-  --foreground: #1f2328;
-  --muted-foreground: #544f45;
-  --accent: #7f9183;
+  /* --- Surface ---------------------------------------------------------- */
+  --paper: #f8fafc;
+  --card: #ffffff;
+  --inset: #f1f5f9;
+  --inset-2: #e9eef5;
+
+  /* --- Ink -------------------------------------------------------------- */
+  --ink: #0f172a;
+  --ink-2: #475569;
+  --ink-3: #64748b;
+  --ink-4: #6e7c90;
+
+  /* --- Line ------------------------------------------------------------- */
+  --line: #e2e8f0;
+  --line-2: #cbd5e1;
+
+  /* --- Accent ----------------------------------------------------------- */
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-tint: #eff6ff;
+  --accent-tint-2: #dbeafe;
+
+  /* Solid-fill pairing for the primary button, kept separate from the accent used
+     for marks and links: in dark mode the fill goes near-white, which the content's
+     own dark direction calls for ("accent, used as emphasis, not colour"). */
+  --accent-fill: #2563eb;
+  --accent-fill-fg: #ffffff;
+  --accent-fill-hover: #1d4ed8;
+
+  /* --- Elevation. Subtle: light, tight, low-alpha. --------------------- */
+  --shadow-c0: rgba(15, 23, 42, 0.02);
+  --shadow-c1: rgba(15, 23, 42, 0.04);
+  --shadow-c2: rgba(15, 23, 42, 0.1);
+  --shadow-c3: rgba(15, 23, 42, 0.14);
+
+  --shadow-1: 0 1px 2px var(--shadow-c1), 0 1px 1px var(--shadow-c0);
+  --shadow-2: 0 1px 2px var(--shadow-c1), 0 10px 24px -10px var(--shadow-c2);
+  --shadow-3: 0 2px 4px var(--shadow-c1), 0 22px 48px -16px var(--shadow-c3);
+
+  /* --- Dark palette, held inert so both remaps below share one source ---- */
+  --d-paper: #0a0a0b;
+  --d-card: #121214;
+  --d-inset: #17171a;
+  --d-inset-2: #202024;
+  --d-ink: #f4f3f1;
+  --d-ink-2: #a8a7a5;
+  --d-ink-3: #8d8c8a;
+  --d-ink-4: #7e7d78;
+  --d-line: rgba(255, 255, 255, 0.09);
+  --d-line-2: rgba(255, 255, 255, 0.18);
+  --d-accent: #6ba5ff;
+  --d-accent-hover: #9cc4ff;
+  --d-accent-tint: rgba(107, 165, 255, 0.1);
+  --d-accent-tint-2: rgba(107, 165, 255, 0.24);
+  --d-accent-fill: #f4f3f1;
+  --d-accent-fill-fg: #0a0a0b;
+  --d-accent-fill-hover: #ffffff;
+  --d-shadow-c0: rgba(0, 0, 0, 0.4);
+  --d-shadow-c1: rgba(0, 0, 0, 0.5);
+  --d-shadow-c2: rgba(0, 0, 0, 0.6);
+  --d-shadow-c3: rgba(0, 0, 0, 0.7);
+
+  /* --- Layout ----------------------------------------------------------- */
+  --shell: 1400px;
+  --gutter: clamp(1.25rem, 5vw, 4.5rem);
+  --section-y: clamp(5rem, 11vh, 9rem);
+  --measure: 68ch;
+  --measure-tight: 60ch;
+
+  /* --- Motion ----------------------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quad: cubic-bezier(0.33, 1, 0.68, 1);
+  --dur-micro: 150ms;
+  --dur-hover: 300ms;
+  --dur-reveal: 700ms;
+  --header-h: 4.25rem;
+
+  color-scheme: light;
+}
+
+/* An explicit choice from the toggle. */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: var(--d-paper);
+  --card: var(--d-card);
+  --inset: var(--d-inset);
+  --inset-2: var(--d-inset-2);
+  --ink: var(--d-ink);
+  --ink-2: var(--d-ink-2);
+  --ink-3: var(--d-ink-3);
+  --ink-4: var(--d-ink-4);
+  --line: var(--d-line);
+  --line-2: var(--d-line-2);
+  --accent: var(--d-accent);
+  --accent-hover: var(--d-accent-hover);
+  --accent-tint: var(--d-accent-tint);
+  --accent-tint-2: var(--d-accent-tint-2);
+  --accent-fill: var(--d-accent-fill);
+  --accent-fill-fg: var(--d-accent-fill-fg);
+  --accent-fill-hover: var(--d-accent-fill-hover);
+  --shadow-c0: var(--d-shadow-c0);
+  --shadow-c1: var(--d-shadow-c1);
+  --shadow-c2: var(--d-shadow-c2);
+  --shadow-c3: var(--d-shadow-c3);
+}
+
+/* The OS default. Applies on a first visit and whenever JavaScript never runs;
+   an explicit `light` choice opts back out of it. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: var(--d-paper);
+    --card: var(--d-card);
+    --inset: var(--d-inset);
+    --inset-2: var(--d-inset-2);
+    --ink: var(--d-ink);
+    --ink-2: var(--d-ink-2);
+    --ink-3: var(--d-ink-3);
+    --ink-4: var(--d-ink-4);
+    --line: var(--d-line);
+    --line-2: var(--d-line-2);
+    --accent: var(--d-accent);
+    --accent-hover: var(--d-accent-hover);
+    --accent-tint: var(--d-accent-tint);
+    --accent-tint-2: var(--d-accent-tint-2);
+    --accent-fill: var(--d-accent-fill);
+    --accent-fill-fg: var(--d-accent-fill-fg);
+    --accent-fill-hover: var(--d-accent-fill-hover);
+    --shadow-c0: var(--d-shadow-c0);
+    --shadow-c1: var(--d-shadow-c1);
+    --shadow-c2: var(--d-shadow-c2);
+    --shadow-c3: var(--d-shadow-c3);
+  }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-inset: var(--inset);
+  --color-inset-2: var(--inset-2);
+
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-tint-2: var(--accent-tint-2);
+  --color-accent-fill: var(--accent-fill);
+  --color-accent-fill-fg: var(--accent-fill-fg);
+  --color-accent-fill-hover: var(--accent-fill-hover);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", monospace;
+
+  --shadow-e1: var(--shadow-1);
+  --shadow-e2: var(--shadow-2);
+  --shadow-e3: var(--shadow-3);
+
+  --container-shell: 1400px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.65;
-  text-rendering: optimizeLegibility;
+/* --- Type scale. Fluid, tightening as it grows. ------------------------- */
+
+@theme {
+  --text-mono: 0.6875rem;
+  --text-mono--line-height: 1.4;
+  --text-mono--letter-spacing: 0.14em;
+
+  --text-mono-lg: 0.75rem;
+  --text-mono-lg--line-height: 1.5;
+  --text-mono-lg--letter-spacing: 0.12em;
+
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.55;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.6;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.65;
+
+  --text-lede: clamp(1.125rem, 0.35vw + 1.05rem, 1.375rem);
+  --text-lede--line-height: 1.55;
+
+  --text-h4: 1.0625rem;
+  --text-h4--line-height: 1.4;
+  --text-h4--letter-spacing: -0.011em;
+
+  --text-h3: clamp(1.25rem, 0.7vw + 1.1rem, 1.625rem);
+  --text-h3--line-height: 1.22;
+  --text-h3--letter-spacing: -0.021em;
+
+  --text-h2: clamp(1.875rem, 3vw + 0.85rem, 3.125rem);
+  --text-h2--line-height: 1.06;
+  --text-h2--letter-spacing: -0.031em;
+
+  --text-h1: clamp(2.375rem, 4.4vw + 1rem, 4.25rem);
+  --text-h1--line-height: 1;
+  --text-h1--letter-spacing: -0.036em;
+
+  --text-display: clamp(2.875rem, 6.4vw + 0.75rem, 6.25rem);
+  --text-display--line-height: 0.94;
+  --text-display--letter-spacing: -0.043em;
+
+  --text-numeral: clamp(3.5rem, 8vw, 7rem);
+  --text-numeral--line-height: 0.8;
+  --text-numeral--letter-spacing: -0.05em;
 }
 
-a {
-  color: inherit;
+/* ==========================================================================
+   BASE
+   Inside @layer base on purpose. Unlayered rules out-rank every @layer, so an
+   unlayered `p { margin: 0 }` would silently beat `mt-6` and `space-y-5` on every
+   paragraph, heading and list on the site.
+   ========================================================================== */
+
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    /* Anchored sections clear the sticky header. */
+    scroll-padding-top: calc(var(--header-h) + 1.5rem);
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--paper);
+    color: var(--ink);
+    transition:
+      background-color 220ms var(--ease-out-quad),
+      color 220ms var(--ease-out-quad);
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    font-feature-settings: "cv05" 1, "cv11" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-weight: 500;
+    text-wrap: balance;
+    font-optical-sizing: auto;
+  }
+
+  p {
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--paper);
+  }
+
+  /* Visible focus, always. Styled — never removed. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
 }
 
-::selection {
-  background-color: rgba(127, 145, 131, 0.3);
-  color: var(--foreground);
+@layer components {
+  /* ==========================================================================
+     THE DETAIL THAT SIGNALS CARE
+     Every metric, date and count is tabular, so nothing shifts width while it
+     animates or while a row re-renders.
+     ========================================================================== */
+
+  .num,
+  time,
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  /* ==========================================================================
+     LAYOUT PRIMITIVES
+     ========================================================================== */
+
+  .shell {
+    width: 100%;
+    max-width: var(--shell);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .measure {
+    max-width: var(--measure);
+  }
+
+  .measure-tight {
+    max-width: var(--measure-tight);
+  }
+
+  /* Serif narrative voice. Used for ledes, overviews and pull quotes only. */
+  .narrative {
+    font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.003em;
+  }
+
+  /* ==========================================================================
+     LINK — underline draws left to right, 300ms.
+     ========================================================================== */
+
+  .link-draw {
+    position: relative;
+    display: inline;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    transition: background-size var(--dur-hover) var(--ease-out-quad);
+    padding-bottom: 0.08em;
+  }
+
+  .link-draw:hover,
+  .link-draw:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* Persistent underline that thickens on hover — for body-copy links. */
+  .link-inline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 1px;
+    transition: color var(--dur-hover) var(--ease-out-quad);
+    padding-bottom: 0.06em;
+  }
+
+  .link-inline:hover {
+    color: var(--accent-hover);
+  }
+
+  /* ==========================================================================
+     HAIRLINE-RULED ROWS
+     The structural device of the site: rows separated by hairlines rather than
+     boxed in cards. Used by Currently, the Work index, Experience and Footer.
+     ========================================================================== */
+
+  .ruled > * + * {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@layer components {
+  /* ==========================================================================
+     BOOT VEIL
+     Present at first paint, gone at ~600ms, never interactive. Pure CSS so a visitor
+     without JavaScript is not left staring at a permanent cover.
+     ========================================================================== */
+
+  [data-boot] {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    background-color: var(--paper);
+    pointer-events: none;
+    animation: boot-out 320ms var(--ease-out-quad) 280ms forwards;
+  }
+
+  [data-boot] p {
+    display: grid;
+    gap: 0.4rem;
+    text-align: center;
+    font-family: var(--font-plex-mono), ui-monospace, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    animation: boot-line 260ms var(--ease-out-quad) both;
+  }
+
+  @keyframes boot-out {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  @keyframes boot-line {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION — everything resolves to its final state. No message.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-boot] {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   PRINT — the résumé of last resort. Type only, no chrome.
+   ========================================================================== */
+
+@media print {
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    font-size: 11pt;
+  }
 }
