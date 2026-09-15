@@ -13,7 +13,7 @@ export const currentlyMeta: SectionMeta = {
 export const currently: readonly CurrentlyEntry[] = [
   {
     name: "Docmize",
-    period: "2026 — Present",
+    period: "february-june 2026",
     role: "Software Developer Intern",
     summary:
       "Frontend interfaces and dashboards for an AI-integrated hospital management system, working inside an existing engineering team and codebase.",
@@ -22,7 +22,7 @@ export const currently: readonly CurrentlyEntry[] = [
   },
   {
     name: "ServiceHub Private Limited",
-    period: "2026 — Present",
+    period: "june-august 2026",
     role: "Freelance Product Developer",
     summary:
       "Sole developer on a paid client engagement — a two-sided services marketplace, built and handed over.",
@@ -31,7 +31,7 @@ export const currently: readonly CurrentlyEntry[] = [
   },
   {
     name: "CuteHelper",
-    period: "Feb 2026 — Present",
+    period: "february 2026 — present",
     role: "Founder & Product Engineer",
     summary:
       "Voice-first AI desktop companion, instrumented to test whether its core loop actually works.",

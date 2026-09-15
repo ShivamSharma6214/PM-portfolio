@@ -52,4 +52,4 @@ export const currentFocus: readonly FocusBlock[] = [
   },
 ];
 
-export const personalNote = "Based in Gurugram, Haryana. Graduating August 2026.";
+export const personalNote = "Based in Gurugram, Haryana. Graduated June 2026.";

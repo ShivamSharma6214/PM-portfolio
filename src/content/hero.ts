@@ -12,7 +12,7 @@ export const hero = {
   headlineLines: ["I write the PRD,", "then I ship it."],
   subheadline:
     "Builder-PM working on AI-first products — discovery and PRDs through hands-on development, then instrumentation of what users actually did.",
-  lede: "Final-year Computer Science student, graduating August 2026. I’ve led a 10-person build, delivered a marketplace for a paying client as sole developer, and shipped a platform that processed 4,000+ submissions in live use. Currently interning at Docmize on an AI hospital management system while building CuteHelper, a voice-first AI desktop companion.",
+  lede: "Final-year Computer Science student, graduated june 2026. I’ve led a 10-person build, delivered a marketplace for a paying client as sole developer, and shipped a platform that processed 4,000+ submissions in live use. Currently interning at Docmize on an AI hospital management system while building CuteHelper, a voice-first AI desktop companion.",
   /** Four cells, mono, no icons. This is the 12-second read. */
   proof: [
     { value: "4", label: "products built end to end" },

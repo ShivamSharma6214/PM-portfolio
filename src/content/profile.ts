@@ -9,7 +9,7 @@ export const profile = {
   locationShort: "Gurugram, India · IST",
   graduating: "Expected August 2026",
   siteUrl: "https://shivam-sharma-portfolio-theta.vercel.app",
-  resumeHref: "/Shivam-Sharma-Product-Manager-Resume.pdf",
+  resumeHref: "/Shivam_Sharma_PM_Resume_Accurate_Title.pdf",
   links: {
     linkedin: "https://linkedin.com/in/shivamsharma6214",
     github: "https://github.com/ShivamSharma6214",
