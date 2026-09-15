@@ -612,7 +612,7 @@ export const projects: readonly Project[] = [
   {
     slug: "docmize",
     name: "Docmize",
-    status: "In progress",
+    status: "Delivered",
     role: "Software Developer Intern",
     kind: "AI Hospital Management System",
     period: "2026 — Present",
