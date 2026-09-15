@@ -31,7 +31,7 @@ export const projects: readonly Project[] = [
     period: "Feb 2026 — Present",
     metaTitle: "CuteHelper — Voice-first AI desktop companion",
     cardBlurb:
-      "A transparent, always-on-top AI companion that listens instead of waiting to be typed at. RICE-scoped to two workflows, built front to back, instrumented to test whether it teaches or just answers.",
+      "Desktop AI companion utilizing a model orchestration layer to dynamically route tasks for optimal latency and complex reasoning.",
     rationale:
       "Founder-level ownership across product and engineering. The rarest combination on the page.",
     metrics: [],
@@ -203,6 +203,8 @@ export const projects: readonly Project[] = [
       statedLabel: "Named in the résumé for this project",
       stated: [
         "Electron",
+        "Model Orchestration",
+        "Vision LLMs",
         "React",
         "TypeScript",
         "Groq Whisper",
