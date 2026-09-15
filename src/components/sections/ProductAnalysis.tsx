@@ -1,16 +1,15 @@
 import { Reveal, RevealChild, Stagger } from "@/src/components/motion/Reveal";
+import { ArrowUpRight, Button } from "@/src/components/ui/Button";
 import { Chip, Eyebrow, Hairline } from "@/src/components/ui/primitives";
 import { analysis } from "@/src/content/analysis";
 
 /**
  * Product analysis — the published Notion case studies.
  *
- * The two titles and URLs are not in the source content, and guessing which products
- * were analysed would be the most damaging error available on this page. So the
- * section renders what is real: the framing, the arc each write-up runs, and the
- * methods. The panel is drawn as two stacked sheets rotated half a degree in
- * opposite directions — two documents, not two tiles. The `Read on Notion` CTA is
- * intentionally absent until a real URL exists; there are no dead links on this site.
+ * The panel is drawn as two stacked sheets rotated half a degree in opposite
+ * directions — two documents, not two tiles. Each study in `analysis.studies`
+ * renders with its own "Read Full Teardown" external link, so the section only
+ * ever shows what's actually published.
  */
 export function ProductAnalysis() {
   return (
@@ -110,6 +109,34 @@ export function ProductAnalysis() {
                       </RevealChild>
                     ))}
                   </Stagger>
+
+                  {analysis.studies.length > 0 ? (
+                    <>
+                      <Hairline className="my-7" />
+                      <Eyebrow className="mb-4 text-ink-4">Read the write-ups</Eyebrow>
+                      <ul className="space-y-5">
+                        {analysis.studies.map((study) => (
+                          <li key={study.href} className="flex flex-col gap-2.5">
+                            <div>
+                              <p className="text-sm font-medium text-ink">{study.title}</p>
+                              <p className="mt-1 font-mono text-mono uppercase tracking-[0.12em] text-ink-4">
+                                {study.role}
+                              </p>
+                              {study.summary ? (
+                                <p className="mt-1.5 text-xs text-ink-3">{study.summary}</p>
+                              ) : null}
+                            </div>
+                            <div>
+                              <Button href={study.href} variant="secondary" size="sm" external>
+                                Read Full Teardown
+                                <ArrowUpRight className="text-ink-3" />
+                              </Button>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : null}
                 </div>
               </div>
             </Reveal>

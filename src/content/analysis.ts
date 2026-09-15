@@ -1,10 +1,10 @@
 /**
  * Section 10.5 — Product Analysis. Published case studies.
  *
- * The two Notion titles and URLs are deliberately absent: the source content
- * refuses to guess which products were analysed, and naming the wrong one would be
- * the single most damaging error on the page. `studies` stays empty until the real
- * titles and links exist, and the section renders its framing copy without them.
+ * Two independent product teardowns, published on Notion. Both are speculative
+ * analyses of products I don't own or work on — the discipline is reasoning about
+ * what should happen next to something already in the world, in writing, to a
+ * reader who can check it.
  */
 
 export const analysis = {
@@ -53,6 +53,16 @@ export const analysis = {
     "Feature Prioritization",
     "Notion",
   ],
-  /** Fill in with the two real titles and Notion URLs. */
-  studies: [] as readonly { title: string; href: string; summary?: string }[],
+  studies: [
+    {
+      title: "OffBeat Studios: Building the AI-Native Creator Hardware Ecosystem",
+      role: "Independent Product Analyst (Strategic Teardown)",
+      href: "https://climbing-quiver-c34.notion.site/OffBeat-Studios-CASE-STUDY-3dc0cb8dd27e8027888bc1c2e825c1d3?source=copy_link",
+    },
+    {
+      title: "Zepto HyperCart: Autonomous Dark-Store Spatial Routing",
+      role: "Independent Product Strategist (Process Teardown)",
+      href: "https://climbing-quiver-c34.notion.site/Zepto-HyperCart-CASE-STUDY-3dc0cb8dd27e80f4ad6de1d3002d1384?source=copy_link",
+    },
+  ] as readonly { title: string; role: string; href: string; summary?: string }[],
 } as const;

@@ -221,7 +221,13 @@ export const projects: readonly Project[] = [
         "KPI Definition",
       ],
     },
-    links: [{ label: "Open the live product", unavailable: unavailable.notPublic }],
+    links: [
+      { label: "Open the live product", unavailable: unavailable.notPublic },
+      {
+        label: "Read the full case study on Notion",
+        href: "https://climbing-quiver-c34.notion.site/CUTE-HELPER-3830cb8dd27e808793e5c6a680bd4b89?source=copy_link",
+      },
+    ],
     mediaPlaceholder: emptyStates.mediaSlot,
   },
 
