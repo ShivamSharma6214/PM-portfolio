@@ -430,9 +430,9 @@ export const projects: readonly Project[] = [
     slug: "servicehub",
     name: "ServiceHub Private Limited",
     status: "Delivered",
-    role: "Freelance Product Developer",
+    role: "Freelance Product Consultant",
     kind: "Services Marketplace",
-    period: "2026 — Present",
+    period: "Jan 2026 — Feb 2026",
     metaTitle: "ServiceHub — Two-sided services marketplace",
     cardBlurb:
       "Sole developer on a paid engagement. Requirements elicited from the client, MVP scoped against a fixed budget, one role-based application serving two distinct experiences plus an admin panel.",
@@ -613,18 +613,18 @@ export const projects: readonly Project[] = [
     slug: "docmize",
     name: "Docmize",
     status: "Delivered",
-    role: "Software Developer Intern",
+    role: "Junior Software Developer Intern",
     kind: "AI Hospital Management System",
-    period: "2026 — Present",
+    period: "Feb 2026 — May 2026",
     metaTitle: "Docmize — AI hospital management system",
     cardBlurb:
       "Frontend interfaces and dashboards for an AI-integrated hospital management system covering appointments and patient workflows, built inside an existing team and codebase.",
     rationale:
-      "Team context — proves he works inside someone else’s codebase, not only greenfield.",
+      "Team context — proof I work inside someone else’s codebase, not only greenfield.",
     metrics: [],
     overview: [
-      "At Docmize I build frontend interfaces and dashboards for an AI-integrated hospital management system covering appointments and patient workflows. It’s the one project on this page where I didn’t choose the architecture, and that’s exactly what makes it valuable to me.",
-      "Everything else here I specced and built myself. This is the environment where I have to translate product requirements into someone else’s codebase, coordinating with backend and design, and it has made me a better spec writer than any project where I got my own way.",
+      "At Docmize I translated product requirements into modular healthcare workflows and designed the AI-assisted experiences clinical staff worked in — appointments and patient workflows, delivered as frontend interfaces and dashboards. It’s the one project on this page where I didn’t choose the architecture, and that’s exactly what makes it valuable to me.",
+      "Everything else here I specced and built myself. This was the environment where I had to translate product requirements into someone else’s codebase, coordinating frontend, backend and design handoffs, and it made me a better spec writer than any project where I got my own way.",
     ],
     problem: [
       "Hospital software has a density problem. A lot of information, several roles, clinical consequences for a confusing screen, and users who are mid-task and not in a position to explore an interface.",
@@ -646,7 +646,7 @@ export const projects: readonly Project[] = [
     ],
     architecture: {
       preface:
-        "This is a team codebase and the architecture predates me, so what follows is my layer rather than the system.",
+        "This was a team codebase and the architecture predated me, so what follows is my layer rather than the system.",
       layers: [
         {
           name: "Frontend layer",
@@ -664,7 +664,7 @@ export const projects: readonly Project[] = [
       footnote: "Fuller architectural detail isn’t mine to publish.",
     },
     features: {
-      columns: ["Area", "What I build", ""],
+      columns: ["Area", "What I built", ""],
       rows: [
         {
           feature: "Appointment interfaces",
@@ -709,7 +709,7 @@ export const projects: readonly Project[] = [
     challenges: [
       {
         title: "Working inside decisions I didn’t make.",
-        body: "Every other project on this page, I chose the structure. Here I inherit it, and my judgment about what’s better is frequently missing context about why something is the way it is. Learning to ask before improving is the actual skill.",
+        body: "Every other project on this page, I chose the structure. Here I inherited it, and my judgment about what was better was frequently missing context about why something was the way it was. Learning to ask before improving is the actual skill.",
       },
       {
         title: "Density without simplification.",
@@ -721,7 +721,7 @@ export const projects: readonly Project[] = [
       },
       {
         title: "Coordination cost as a feature of the job.",
-        body: "Working with backend and design is slower than deciding alone and produces things that survive after I leave. Recalibrating my sense of “productive” around that took a while.",
+        body: "Working with backend and design is slower than deciding alone and produces things that survive after you leave. Recalibrating my sense of “productive” around that took a while.",
       },
     ],
     lessons: [
@@ -743,7 +743,7 @@ export const projects: readonly Project[] = [
       },
     ],
     futureImprovements: {
-      preface: "Framed as what I’d want to push for, not as decisions I own:",
+      preface: "Framed as what I’d have pushed for, not as decisions I owned:",
       items: [
         "Instrument the appointment and patient workflows so requirement debates are settled with usage data.",
         "Make AI-assisted suggestions consistently traceable — source and confidence visible at the point of use in every flow.",

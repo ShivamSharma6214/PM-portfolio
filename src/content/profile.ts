@@ -7,7 +7,7 @@ export const profile = {
   phone: "+91 8360900804",
   location: "Gurugram, Haryana, India · IST (GMT+5:30)",
   locationShort: "Gurugram, India · IST",
-  graduating: "Expected August 2026",
+  graduating: "Expected November 2026",
   siteUrl: "https://shivam-sharma-portfolio-theta.vercel.app",
   resumeHref: "/Shivam_Sharma_PM_Resume_Accurate_Title.pdf",
   links: {

@@ -33,7 +33,7 @@ export const journey: readonly JourneyBeat[] = [
   {
     year: "2026",
     title: "Building at three altitudes.",
-    body: "Now: a client product where I’m the only developer and the requirements come straight from the person paying, a team codebase at Docmize where I have to fit someone else’s architecture, and CuteHelper, where every decision is mine and every mistake is too.",
+    body: "This year: a client product where I was the only developer and the requirements came straight from the person paying, a team codebase at Docmize where I had to fit someone else’s architecture, and CuteHelper, where every decision is mine and every mistake is too.",
   },
 ];
 
@@ -44,7 +44,7 @@ export const currentFocus: readonly FocusBlock[] = [
   },
   {
     label: "What I’m getting better at",
-    body: "working inside an existing codebase and someone else’s architectural decisions. Docmize is the first environment where I’m not the one who chose the structure, and it’s made me a better spec writer — a requirement reads differently when you know what it costs the person implementing it.",
+    body: "working inside an existing codebase and someone else’s architectural decisions. Docmize was the first environment where I wasn’t the one who chose the structure, and it made me a better spec writer — a requirement reads differently when you know what it costs the person implementing it.",
   },
   {
     label: "What I’m looking for",
@@ -52,4 +52,4 @@ export const currentFocus: readonly FocusBlock[] = [
   },
 ];
 
-export const personalNote = "Based in Gurugram, Haryana. Graduated June 2026.";
+export const personalNote = "Based in Gurugram, Haryana. Graduating November 2026.";

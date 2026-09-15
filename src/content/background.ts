@@ -17,22 +17,22 @@ export const backgroundMeta: SectionMeta = {
 
 export const experience: readonly ExperienceEntry[] = [
   {
-    role: "Software Developer Intern",
+    role: "Junior Software Developer Intern",
     org: "Docmize",
     context: "AI Hospital Management System",
-    period: "2026 — Present",
+    period: "Feb 2026 — May 2026",
     caseStudy: "docmize",
     bullets: [
-      "Build frontend interfaces and dashboards for an AI-integrated hospital management system covering appointments and patient workflows.",
-      "Translate product requirements into modular, scalable healthcare workflows and AI-assisted user experiences.",
-      "Work within an existing engineering team and codebase, coordinating with backend and design.",
+      "Translated product requirements into modular, scalable healthcare workflows and designed AI-assisted user experiences for clinical staff.",
+      "Built frontend interfaces and dashboards for an AI-integrated hospital management system covering appointments and patient workflows.",
+      "Collaborated within an existing engineering team to coordinate frontend, backend and design handoffs, ensuring accurate feature delivery.",
     ],
   },
   {
-    role: "Freelance Product Developer",
+    role: "Freelance Product Consultant",
     org: "ServiceHub Private Limited",
     context: "Services Marketplace",
-    period: "2026 — Present",
+    period: "Jan 2026 — Feb 2026",
     caseStudy: "servicehub",
     bullets: [
       "Sole developer on a paid client engagement, building an on-demand marketplace connecting customers with local service providers.",
@@ -81,7 +81,7 @@ export const experience: readonly ExperienceEntry[] = [
 export const education = {
   degree: "B.Tech, Computer Science & Engineering",
   institution: "I.K. Gujral Punjab Technical University",
-  period: "Expected August 2026",
+  period: "Expected November 2026",
   note: "Final year. The coursework has run alongside the builds rather than behind them — UrbanIQ and the published case studies were both done during it.",
 } as const;
 
